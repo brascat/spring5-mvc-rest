@@ -3,7 +3,9 @@ package com.catarina.spring5mvcrest.bootstrap;
 import com.catarina.spring5mvcrest.domain.Category;
 import com.catarina.spring5mvcrest.repositories.CategoryRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Bootstrap implements CommandLineRunner {
 
     private CategoryRepository categoryRepository;
