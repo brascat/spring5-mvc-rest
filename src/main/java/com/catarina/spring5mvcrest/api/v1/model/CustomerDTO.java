@@ -1,9 +1,10 @@
 package com.catarina.spring5mvcrest.api.v1.model;
 
 public class CustomerDTO {
-    private Long id;
     private String firstname;
     private String lastname;
+
+    private String url;
 
     public CustomerDTO() {
     }
@@ -24,11 +25,11 @@ public class CustomerDTO {
         this.lastname = lastname;
     }
 
-    public Long getId() {
-        return id;
+    public String getUrl() {
+        return url;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
