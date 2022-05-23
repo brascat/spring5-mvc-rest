@@ -2,6 +2,7 @@ package com.catarina.spring5mvcrest.services;
 
 import com.catarina.spring5mvcrest.api.v1.mapper.CustomerMapper;
 import com.catarina.spring5mvcrest.api.v1.model.CustomerDTO;
+import com.catarina.spring5mvcrest.domain.Customer;
 import com.catarina.spring5mvcrest.repositories.CustomerRepository;
 import org.springframework.stereotype.Service;
 
@@ -31,5 +32,14 @@ public class CustomerServiceImpl implements CustomerService{
     @Override
     public CustomerDTO getCustomerById(Long id) {
         return customerMapper.customerToCustomerDTO(customerRepository.findById(id).get());
+    }
+
+    @Override
+    public CustomerDTO saveCustomer(CustomerDTO customerDTO) {
+        Customer customer = customerMapper.customerDTOToCustomer(customerDTO);
+        Customer savedCustomer = customerRepository.save(customer);
+        CustomerDTO returnCust = customerMapper.customerToCustomerDTO(savedCustomer);
+        returnCust.setUrl("/api/v1/customer/" + savedCustomer.getId());
+        return returnCust;
     }
 }
